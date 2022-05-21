@@ -1,4 +1,4 @@
-package List06;
+package List03;
 import java.util.Scanner;
 
 public class Ex06 {
