@@ -2,15 +2,15 @@
  * DUPLA:
  *
  * -> SAULO JOSÉ FELIPE
- * ->
+ * -> ANTONIO VICENTE DANTAS JUNIOR
 */
 
 package Ex02;
 
 class Main {
   public static void main(String[] args) {
-    public NewGame game = new NewGame();
-    public Input input = new Input();
+    NewGame game = new NewGame();
+    Input input = new Input();
 
     game.drawingUpdate();
 
