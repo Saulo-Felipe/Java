@@ -16,6 +16,8 @@ public class Ex07 {
 			divisorComum(var1, var2, index);
 		else
 			divisorComum(var2, var1, index);
+		
+		input.close();
 	}
 
 	public static void divisorComum(int var1, int var2, int index) {

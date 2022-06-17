@@ -5,7 +5,7 @@
  * -> ANTONIO VICENTE DANTAS JUNIOR
 */
 
-package Ex02;
+package labII.Ex02;
 
 class Main {
   public static void main(String[] args) {
@@ -14,8 +14,7 @@ class Main {
 
     game.drawingUpdate();
 
-
-    while (game.hasWinner == 0) {
+    while (game.hasWinner == 0) { // Loop de uma partida
       game.playerTurn = game.playerTurn == 2 ? 1 : 2;
 
       int[] lineAndColumn = input.getGameEntry(game.playerTurn, game.ticTacToe);

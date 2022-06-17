@@ -18,6 +18,7 @@ public class Ex03 {
 		String tipoTriangulo = verificaTriangulo(X, Y, Z);
 
 		System.out.println("Tipo do triângulo: " + tipoTriangulo);
+		input.close();
 	}
 
 	public static String verificaTriangulo(float X, float Y, float Z) {

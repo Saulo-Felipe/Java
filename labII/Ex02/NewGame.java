@@ -1,4 +1,4 @@
-package Ex02;
+package labII.Ex02;
 
 public class NewGame {
   public int[][] ticTacToe = new int[3][3];

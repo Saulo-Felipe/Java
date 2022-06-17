@@ -42,5 +42,6 @@ public class Ex05 {
 			System.out.println("S1 inversa: "+new StringBuilder(S1).reverse().toString());
 		}
 
+		input.close();
 	}
 }

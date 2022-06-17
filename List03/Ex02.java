@@ -20,6 +20,8 @@ public class Ex02 {
 			System.out.println("Letra inválida");
 		else 
 			System.out.println("Sua média: " + resultado);
+		
+		input.close();
 	}
 
 	public static float calcularMedia(float nota01, float nota02, float nota03, String letra) {

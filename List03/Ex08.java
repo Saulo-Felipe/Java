@@ -44,6 +44,8 @@ public class Ex08 {
 
 			System.out.print("Preço: ");
 			this.preco = input.nextDouble();
+
+			input.close();
 		}
 	}
 }

@@ -1,4 +1,4 @@
-package Ex02;
+package labII.Ex02;
 import java.util.Scanner;
 
 public class Input {
@@ -33,5 +33,11 @@ public class Input {
     }
 
     return true;
+  }
+
+  public String[] getAccountInfo() {
+    
+    String[] account = {"saulo", ""};
+    return  account;
   }
 }

@@ -10,6 +10,8 @@ public class Ex01 {
 
 		if (num == 1) System.out.println("Número par.");
 		else System.out.println("Número Ímpar.");
+
+		input.close();
 	}
 
 	public static int verifyInt(int number) {

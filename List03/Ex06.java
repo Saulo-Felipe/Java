@@ -11,6 +11,7 @@ public class Ex06 {
 		int soma = 0;
 
 		soma(num, index, soma);
+		input.close();
 	}
 
 	public static void soma(int num, int index, int soma) {

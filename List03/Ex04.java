@@ -15,5 +15,7 @@ public class Ex04 {
 			System.out.println("Strings iguais!");
 		else 
 			System.out.println(string1 + string2);
+		
+		input.close();
 	}
 }

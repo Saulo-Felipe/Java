@@ -3,7 +3,7 @@ package List05;
 class Hacker {
   public static void main(String[] args) {
     Usuario usuario = new Usuario();
-    UsuarioProtegido usuarioProtegido = new UsuarioProtegido();
+    // UsuarioProtegido usuarioProtegido = new UsuarioProtegido();
 
     // Sem o uso do encapsulamento, o usuario pode ser hackeado
     usuario.login = "hackeado@gmail.com";
