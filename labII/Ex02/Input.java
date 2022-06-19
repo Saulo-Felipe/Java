@@ -1,4 +1,4 @@
-package labII.Ex02;
+package Ex02;
 import java.util.Scanner;
 
 public class Input {

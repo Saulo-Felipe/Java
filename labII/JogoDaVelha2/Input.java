@@ -15,6 +15,19 @@ public class Input {
     return username;
   }
 
+  public String[] getTwoPlayersUsername() {
+    this.scanner = new Scanner(System.in);
+    String[] usernames = {"", ""};
+
+    System.out.print("\nNome do usuário 1: ");
+    usernames[0] = this.scanner.nextLine();
+
+    System.out.print("Nome do usuário 2: ");
+    usernames[1] = this.scanner.nextLine();
+
+    return usernames;
+  }
+
   public int getIntWithoutError(String label, int optionsLimitIndex) {
     this.scanner = new Scanner(System.in);
     int value = 0;

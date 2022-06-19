@@ -1,20 +1,18 @@
-package Ex02;
+package JogoDaVelha2.gameTwoPlayers;
+
+import java.util.Scanner;
+
+import JogoDaVelha2.Tools;
 
 public class NewGame {
   public int[][] ticTacToe = new int[3][3];
   public int playerTurn = 2;
   public int hasWinner = 0;
+  public Scanner input = new Scanner(System.in);
+  public Tools tools = new Tools();
+
 
   public void drawingUpdate() {
-    for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
-        System.out.print(this.ticTacToe[i][j] + " ");
-      }
-      System.out.println();
-    }
-    System.out.println(); // Jogo teste
-    // -----------------------------------------------------
-
     System.out.println("   1   2   3"); // Positions
 
     for (int i = 1; i < 7; i++) {
@@ -70,6 +68,37 @@ public class NewGame {
           return false;
         }
       }
+    }
+
+    return true;
+  }
+
+  public int[] getGameEntry(int playerTurn, int[][] ticTacToe) {
+    System.out.print("======| Vez de "+this.tools.getAuthenticatedUer()[playerTurn == 1 ? 1 : 3]+" |=====\n");
+    int[] lineAndColumn = {0, 0};
+    int init = 0;
+    
+    while (init == 0 || !verifyEntry(lineAndColumn, ticTacToe)) {      
+      System.out.print("Linha: ");
+      lineAndColumn[0] = input.nextInt();
+  
+      System.out.print("Coluna: ");
+      lineAndColumn[1] = input.nextInt();
+
+      init = 1;
+    }
+    
+    return lineAndColumn;
+  }
+
+  public boolean verifyEntry(int[] lineAndColumn, int[][] ticTacToe) {
+    if ((lineAndColumn[0] < 1 || lineAndColumn[1] < 1) || (lineAndColumn[0] > 3 || lineAndColumn[1] > 3)) {
+      System.out.println("Posição inválida!");
+      return false;
+    }
+    else if (ticTacToe[lineAndColumn[0]-1][lineAndColumn[1]-1] != 0) {
+      System.out.println("Posição ocupada");
+      return false;
     }
 
     return true;

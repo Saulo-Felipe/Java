@@ -1,11 +1,4 @@
-/*
- * DUPLA:
- *
- * -> SAULO JOSÉ FELIPE
- * -> ANTONIO VICENTE DANTAS JUNIOR
-*/
-
-package labII.Ex02;
+package Ex02;
 
 class Main {
   public static void main(String[] args) {
