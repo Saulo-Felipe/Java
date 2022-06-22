@@ -1,7 +1,7 @@
 public class Ex02 {
   public static void main(String[] args) {
-    Quadrado quadrado = new Quadrado(2, 4);
-    Quadrado retangulo = new Quadrado(4, 16);
+    Quadrado quadrado = new Quadrado();
+    Retangulo retangulo = new Retangulo();
 
     quadrado.desenha();
     retangulo.desenha();
@@ -40,9 +40,16 @@ abstract class FiguraAbstrata {
 
 class Quadrado extends FiguraAbstrata {
   
-  Quadrado(int altura, int largura) {
-    this.altura = altura;
-    this.largura = largura;
+  Quadrado() {
+    this.altura = 2;
+    this.largura = 4;
   }
 
+}
+
+class Retangulo extends FiguraAbstrata {
+  Retangulo() {
+    this.altura = 4;
+    this.largura = 16;
+  }
 }
