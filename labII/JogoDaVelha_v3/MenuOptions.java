@@ -8,7 +8,6 @@ import javax.swing.JTextField;
 public class MenuOptions {
   public static void Home() {
     try {
-
       String[] options = {
         "Iniciar jogo",
         "Cadastrar usuário",
@@ -46,8 +45,6 @@ public class MenuOptions {
     } catch(Exception e) {
       System.out.println("Saindo...");
     }
-
-    System.out.println("Saindo...");
   }
 
   public static void RegisterUser() {
@@ -111,38 +108,45 @@ public class MenuOptions {
   }
 
   public static void SelectGameMode() {
-    Object[] modes = {
-      "Dois jogadores",
-      "Contra máquina (Inteligente)",
-      "Contra máquina (burra)",
-    };
-
-    String option = (String)JOptionPane.showInputDialog(
-      null,
-      "Selecione o modo de jogo",
-      "Jogos disponíveis",
-      JOptionPane.OK_CANCEL_OPTION,
-      null,
-      modes,
-      modes[0]
-    );
-
-    switch (option) {
-      case "Dois jogadores":
+    try {
+      Object[] modes = {
+        "Dois jogadores",
+        "Contra máquina (Inteligente)",
+        "Contra máquina (burra)",
+      };
+  
+      String option = (String)JOptionPane.showInputDialog(
+        null,
+        "Selecione o modo de jogo",
+        "Jogos disponíveis",
+        JOptionPane.INFORMATION_MESSAGE,
+        null,
+        modes,
+        modes[0]
+      );
+  
+      System.out.println("Su optin: " + option);
+      
+      if (option.equals("Dois jogadores")) {
         MenuOptions.TwoPlayersLogin();
-        break;
+        System.out.println("option 1");
+      }
+  
+      else if (option.equals("Contra máquina (Inteligente)")) {
+        System.out.println("option 2");
+      }
+  
+      else if (option.equals("Contra máquina (burra)")) {
+        System.out.println("option 3");
+  
+      } else {
+        System.out.println("option 4");
+        MenuOptions.Home();
+  
+      }
 
-      case "Contra máquina (Inteligente)":
-
-        break;
-
-      case "Contra máquina (burra)":
-
-        break;
-
-
-      default:
-        break;
+    } catch(Exception e) {
+      MenuOptions.Home();
     }
 
   }
@@ -177,43 +181,75 @@ public class MenuOptions {
         int option = JOptionPane.showConfirmDialog(null, message, i == 0 ? "Primeiro jogador" : "Segundo jogador", JOptionPane.OK_CANCEL_OPTION);
 
         if (option == 0) { // Ok option
-          if (usernameTextField.getText().length() == 0) {
-            MenuOptions.showMessage("Usuário inválido.");
-          } else if (passwordTextField.getPassword().length == 0) {
-            MenuOptions.showMessage("Senha inválida.");
+          String username = usernameTextField.getText();
+          String password = String.valueOf(passwordTextField.getPassword());
+
+          String logs = Archives.verifyLogin(username, password);
+
+          if (logs.equals("Success")) {
+
+            if (i == 1 && username.equals(twoPlayersList.get(0).username)) {
+              MenuOptions.showMessage("O nome de usuário <"+username+"> já foi usado pelo jogador 1.");
+            } else {
+              twoPlayersList.add(new User(
+                username, 
+                password
+              ));
+
+              isValidValues = true;
+            }
+
           } else {
-            if (i == 0)
-              MenuOptions.showMessage("Tudo ok, agora entre com o 2º player.");
-            User newUser = new User(
-              usernameTextField.getText(), 
-              String.valueOf(passwordTextField.getPassword())
-            );
-            twoPlayersList.add(newUser);
-            break;
-            // Init game
+            MenuOptions.showMessage(logs);
           }
+
         } else { // Cancel option
           action = "Cancel";
           break PickTwoPlayers;
         }
       }
       
-      if (action.equals("Cancel"))
-        MenuOptions.Home();
     }
 
-    // Start the game here kk
-    for (User user: twoPlayersList) {
-      System.out.println(user.username);
-      System.out.println(user.password);
-    }
+    if (action.equals("Cancel"))
+      MenuOptions.SelectGameMode();
 
+    GameTwoPlayers.start(twoPlayersList.get(0).username, twoPlayersList.get(1).username);
 
   }
 
+  public static boolean keepPlaying() {
+    try {
+      Object[] options = {
+        "Não :(",
+        "Simmm :D"
+      };
 
+      int option = JOptionPane.showOptionDialog(
+        null,
+        "Deseja continuar jogando?",
+        "Fim de jogo",
+        JOptionPane.YES_NO_OPTION,
+        JOptionPane.QUESTION_MESSAGE,
+        null,
+        options,
+        options[1]
+      );
 
+      if (option == 1)
+        return true;
+      else 
+        return false;
+      
+    } catch (Exception e) {
+      e.printStackTrace();
+      return false;
+    } 
+  }
+
+ 
   public static void showMessage(String message) {
     JOptionPane.showMessageDialog(null, message);
   }
+
 }
