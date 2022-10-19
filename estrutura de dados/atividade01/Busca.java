@@ -25,23 +25,26 @@ public class Busca implements Busca_IF {
 
 
 	public boolean buscaBinaria_iterativa(int[] numeros, int num) {
-		int tamanhoAtualizado = numeros.length;
+		int start = 0;
+		int end = numeros.length-1;
+		int pos = (end + start)/2;
 
-		for (int c = 0; c < numeros.length; c++) {
-			int pos = tamanhoAtualizado/2;
+		while (pos != start || pos != end) {
+			pos = (end + start)/2;
+			System.out.println("start: "+end+"\n");
+			System.out.println("end: "+end+"\n");
+			System.out.println("end: "+end+"\n");
 
-			if (numeros[pos] == num) {
-				return true;
 
+			if (numeros[pos] > num) {
+				end = pos;
+
+			} else if (numeros[pos] < num) {
+				start = pos;				
+				
 			} else {
-				for (int i = 0; i < tamanhoAtualizado/2; i++) {
-					numeros[i] = numeros[pos+i+1];
-				}
-
+				return true;
 			}
-			tamanhoAtualizado = pos;
-
-			if (pos == 0) return false;
 		}
 
 		return false;
