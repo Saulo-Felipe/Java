@@ -13,7 +13,6 @@ public class FilaComPilhas implements Fila_IF {
 	@Override
 	public void enqueue(int element) throws Exception {
 		p1.push(element);
-		
 	}
 
 	@Override
